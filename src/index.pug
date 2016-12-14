@@ -1,0 +1,17 @@
+//- index.pug
+extends ./_includes/_layout
+include ./_includes/_mixins
+
+block vars
+	- pageKey = home
+	- bodyClass = pageKey.body_class
+	- siteTitle = pageKey.title
+	- siteDescription = pageKey.description
+	- siteKeywords = pageKey.keywords
+
+block hero
+	section#hero
+		h1 Hero sd
+block content
+	sectio#body
+		h1 Hello

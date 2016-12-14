@@ -1,0 +1,23 @@
+{
+	"global": {
+		"site_title": "Site Title",
+		"language": "en",
+		"home_link": "/"
+	},
+	"home": {
+		"description": "Home page meta description",
+		"keywords": "Home page meta keywords",
+		"title": "Home Page Title",
+		"body_class": "home",
+		"hero": {
+			"bg_class": "home-bg",
+			"header": "",
+			"subhead": ""
+		},
+		"section_1": {
+			"img": "",
+			"header": "",
+			"copy": ""
+		}
+	}
+}

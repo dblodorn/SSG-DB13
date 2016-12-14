@@ -1,0 +1,8 @@
+_assets/*
+node_modules
+deploy-credentials.json
+npm-debug.log
+npm-debug.log.*
+src/_temp/*
+npm-debug.log
+dist/*

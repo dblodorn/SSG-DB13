@@ -1,0 +1,22 @@
+//- layout.pug
+block vars
+
+html(lang= global.language class= global.language)
+  head
+    title #{global.site_title} | #{siteTitle}
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
+    meta(name="description" content= siteDescription)
+    meta(name="keywords" content= siteKeywords)
+    base(href='/')
+    include ./reset.pug
+    link(href="static/css/main.css" rel="stylesheet")
+  body(class= bodyClass)
+    include ./header-content
+    main(role="main")
+      block hero
+        section#hero
+      block content
+    include ./footer-content.pug
+    include ./scripts.pug

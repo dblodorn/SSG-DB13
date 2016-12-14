@@ -1,0 +1,36 @@
+//-------------------------------------------------------------------
+//  TOP LEVEL SELECTOR STYLING
+//-------------------------------------------------------------------
+
+html
+  font-size: 55%
+  -webkit-font-smoothing: antialiased
+  text-rendering: optimizeSpeed
+  +phabletup
+    font-size: 62.5%
+
+body
+  font-size: $base-font-size
+  overflow-x: hidden
+  width: 100vw
+  min-height: 100vh
+  margin: 0
+  background: orange
+  *
+    @extend %border-box
+
+// GENERAL
+
+header
+  z-index: $header-z
+
+nav
+  z-index: $nav-z
+
+section
+  z-index: $content-z
+
+img
+  width: 100%
+  height: auto
+  margin-bottom: -3px
