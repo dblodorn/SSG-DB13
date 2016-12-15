@@ -11,7 +11,8 @@ block vars
 
 block hero
 	section#hero
-		h1 Hero
+		h1= pageKey.hero.header
+		h5= pageKey.hero.subhead
 block content
-	sectio#body
-		h1 Hello
+	section#body
+		include:markdown-it ./_markdown/some-text.markdown

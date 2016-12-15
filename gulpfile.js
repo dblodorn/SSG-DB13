@@ -46,7 +46,8 @@ var filesToWatch = [
   './src/*.pug',
   './src/**/*.pug',
   './src/_includes/*.pug',
-  './_data.json',
+  './src/_data.json',
+  './src/_markdown/*.markdown',
   './src/_sass/**/*.sass'
 ]
 
