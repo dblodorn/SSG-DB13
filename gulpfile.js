@@ -3,24 +3,23 @@
 // Add gulp-changed
 
 /* Plugins */
-const gulp        = require('gulp'),
-      gutil       = require('gulp-util'),
-      pug         = require('gulp-pug'),
-      ftp         = require('vinyl-ftp'),
-      sync        = require('gulp-npm-script-sync'),
-      data        = require('gulp-data'),
-      clean       = require('gulp-clean'),
-      rename      = require("gulp-rename"),
-      merge       = require('gulp-merge-json'),
-      fs          = require('fs'),
-      shell       = require('gulp-shell'),
-      sass        = require('gulp-sass'),
-      prefix      = require('gulp-autoprefixer'),
-      minifycss   = require('gulp-minify-css'),
-      path        = require('path'),
-      connect     = require('gulp-connect');
- 
-const config      = require('./config.json')
+const gulp          = require('gulp'),
+      gutil         = require('gulp-util'),
+      pug           = require('gulp-pug'),
+      ftp           = require('vinyl-ftp'),
+      sync          = require('gulp-npm-script-sync'),
+      data          = require('gulp-data'),
+      clean         = require('gulp-clean'),
+      rename        = require("gulp-rename"),
+      merge         = require('gulp-merge-json'),
+      fs            = require('fs'),
+      shell         = require('gulp-shell'),
+      sass          = require('gulp-sass'),
+      autoprefixer  = require('gulp-autoprefixer'),
+      minifycss     = require('gulp-minify-css'),
+      path          = require('path'),
+      connect       = require('gulp-connect'),
+      config        = require('./config.json');
 
 /* I - O  */
 input  = {
@@ -60,9 +59,10 @@ gulp.task('sass', function (){
       ],
       outputStyle: 'expanded'
     }))
-    .pipe(prefix(
-      "last 1 version", "> 1%", "ie 8", "ie 7"
-    ))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
     .pipe(gulp.dest('./src/_temp/css'))
     .pipe(minifycss())
     .pipe(gulp.dest('./dist/static/css'));
