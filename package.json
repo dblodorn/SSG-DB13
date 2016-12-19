@@ -13,7 +13,11 @@
     "css": "gulp css",
     "connect": "gulp connect",
     "sass-json": "gulp sass-json",
-    "merge-json": "gulp merge-json"
+    "merge-json": "gulp merge-json",
+    "default\u001b[8mrg\u001b[0m\u001b[2D": "gulp default\u001b[8mrg\u001b[0m\u001b[2D",
+    "default\u001b[8mkT\u001b[0m\u001b[2D": "gulp default\u001b[8mkT\u001b[0m\u001b[2D",
+    "default\u001b[8mQ$\u001b[0m\u001b[2D": "gulp default\u001b[8mQ$\u001b[0m\u001b[2D",
+    "seq": "gulp seq"
   },
   "license": "GPL2",
   "devDependencies": {
@@ -38,6 +42,7 @@
     "gulp-plumber": "^0.6.5",
     "gulp-pug": "^3.1.0",
     "gulp-rename": "^1.2.2",
+    "gulp-run-seq": "^1.2.4",
     "gulp-sass": "^2.3.2",
     "gulp-shell": "^0.5.2",
     "gulp-util": "^3.0.0",

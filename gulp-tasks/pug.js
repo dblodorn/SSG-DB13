@@ -10,5 +10,5 @@ module.exports = function ( gulp, data, pug, rename, fs ) {
       pretty: true
     }))
     .pipe(gulp.dest(output.dist))
-};
+  };
 };

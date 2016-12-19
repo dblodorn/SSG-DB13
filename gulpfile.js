@@ -4,6 +4,7 @@
 
 /* Plugins */
 const gulp          = require('gulp'),
+      runSequence   = require('run-sequence'),
       gutil         = require('gulp-util'),
       pug           = require('gulp-pug'),
       ftp           = require('vinyl-ftp'),
@@ -76,6 +77,8 @@ gulp.task('connect', function() {
     root: './dist/',
     livereload: true
   });
+  // run sequence
+  //callback();
 });
 
 /* SHELL - WEBACK WATCH */
@@ -84,7 +87,7 @@ gulp.task('webpack-watch', shell.task([
 ]))
 
 gulp.task('watchgulp', function() {
-  gulp.watch(filesToWatch, ['pug','sass']);    
+  gulp.watch(filesToWatch, ['merge-json','pug','sass']);    
 });
 
 // MERGE JSON DATA
@@ -99,7 +102,13 @@ gulp.task('pug', require('./gulp-tasks/pug')(gulp, data, pug, rename, fs, merge)
 gulp.task('deploy', require('./gulp-tasks/deploy')(gulp, ftp));
 
 /* Default Task */
-gulp.task('default', ['webpack-watch','watchgulp','connect']);
+gulp.task('default', ['merge-json','webpack-watch','watchgulp','connect']);
+
+
+// GET RUN SEQUENCE WORKING
+gulp.task('seq', function(callback) {
+  runSequence('merge-json', ['sass', 'pug'],'webpack-watch','watchgulp','connect', callback);
+});
 
 /* GULP SYNC */
 sync(gulp, {
