@@ -1,3 +1,8 @@
 {
-	"test": "red"
+	"color": {
+		"red": "#Cc0000"
+	},
+	"img_path": {
+		"hero": "'https://s3-us-west-1.amazonaws.com/db13/demos/'"
+	}
 }

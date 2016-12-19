@@ -19,7 +19,10 @@ const gulp          = require('gulp'),
       minifycss     = require('gulp-minify-css'),
       path          = require('path'),
       connect       = require('gulp-connect'),
-      config        = require('./config.json');
+      config        = require('./config.json'),
+      //json
+      concat        = require('gulp-concat'),
+      jsonCss       = require('gulp-json-css');
 
 /* I - O  */
 input  = {
@@ -51,22 +54,20 @@ var filesToWatch = [
   './src/_sass/**/*.sass'
 ]
 
-// SASS
-gulp.task('sass', function (){
-  gulp.src(['./src/_sass/main.sass'])
-    .pipe(sass({
-      includePaths: [
-        './src/_sass/*/**'
-      ],
-      outputStyle: 'expanded'
-    }))
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false
-    }))
-    .pipe(gulp.dest('./src/_temp/css'))
-    .pipe(minifycss())
-    .pipe(gulp.dest('./dist/static/css'));
+// JSON SASS
+gulp.task('sass', function() {
+  return gulp
+  .src(['./src/_vars.json', './src/_sass/main.sass'])
+  .pipe(jsonCss())
+  .pipe(concat('main.sass'))
+  .pipe(sass())
+  .pipe(autoprefixer({
+    browsers: ['last 2 versions'],
+    cascade: false
+  }))
+  .pipe(gulp.dest('./src/_temp/css'))
+  .pipe(minifycss())
+  .pipe(gulp.dest('./dist/static/css'));
 });
 
 /* SERVER */

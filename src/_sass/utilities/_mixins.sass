@@ -71,6 +71,14 @@ $super-large: 1600px
   background-position: $h-position $v-position
   background-repeat: no-repeat
 
+=hero-bg-img($img-name,$h-position,$v-position)
+  +phabletup
+    background-image: url("#{$img_path-hero}#{$img-name}-desk.jpg")
+  background-image: url("#{$img_path-hero}#{$img-name}-mobile.jpg")
+  background-size: cover
+  background-position: $h-position $v-position
+  background-repeat: no-repeat
+
 // Transition
 =transition($transition-property, $transition-time, $method)
   -webkit-transition: $transition-property $transition-time $method
