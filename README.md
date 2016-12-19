@@ -12,6 +12,6 @@ This SSG uses pug for templating - sass for styleeeing - JS grooveeeying. JS bun
 
 
 ## .........next steps 👟💭
-    
-    1. Use a JSON file to define style variables that be used in SASS and JS 🔮
-    2. Generate multiple pages from one template - create new pages only in JSON 🤔 😱
+  
+- Use a JSON file to define style variables that be used in SASS and JS 🔮  
+- Generate multiple pages from one template - create new pages only in JSON 🤔 😱
