@@ -3,12 +3,12 @@ module.exports = function ( gulp, data, pug, rename, fs ) {
     gulp.src(input.pug)
     .pipe(data(function(file) {
       return JSON.parse(
-        fs.readFileSync('./src/_data.json')
+        fs.readFileSync('./src/_temp/data.json')
       );
     }))
     .pipe(pug({
       pretty: true
     }))
     .pipe(gulp.dest(output.dist))
-  };
+};
 };

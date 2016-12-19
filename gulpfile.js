@@ -84,11 +84,18 @@ gulp.task('webpack-watch', shell.task([
 ]))
 
 gulp.task('watchgulp', function() {
-  gulp.watch(filesToWatch, ['pug','sass']);    
+  gulp.watch(filesToWatch, ['merge-json','pug','sass']);    
+});
+
+// MERGE JSON DATA
+gulp.task('merge-json', function() {
+  gulp.src('./src/*.json')
+      .pipe(merge('data.json'))
+      .pipe(gulp.dest('./src/_temp/'));
 });
 
 /* Task Library */
-gulp.task('pug', require('./gulp-tasks/pug')(gulp, data, pug, rename, fs, connect));
+gulp.task('pug', require('./gulp-tasks/pug')(gulp, data, pug, rename, fs, merge));
 gulp.task('deploy', require('./gulp-tasks/deploy')(gulp, ftp));
 
 /* Default Task */

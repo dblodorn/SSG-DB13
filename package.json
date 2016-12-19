@@ -12,7 +12,8 @@
     "html": "gulp html",
     "css": "gulp css",
     "connect": "gulp connect",
-    "sass-json": "gulp sass-json"
+    "sass-json": "gulp sass-json",
+    "merge-json": "gulp merge-json"
   },
   "license": "GPL2",
   "devDependencies": {
