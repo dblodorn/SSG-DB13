@@ -84,7 +84,7 @@ gulp.task('webpack-watch', shell.task([
 ]))
 
 gulp.task('watchgulp', function() {
-  gulp.watch(filesToWatch, ['merge-json','pug','sass']);    
+  gulp.watch(filesToWatch, ['pug','sass']);    
 });
 
 // MERGE JSON DATA
