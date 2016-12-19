@@ -5,8 +5,10 @@
 This SSG uses pug for templating - sass for styleeeing - JS grooveeeying. JS bundling is handled through webpack, all the other build automation is done with gulp. It creates a static site in another folder. WOW!!!!!!!
 
 ### Some fun stuff:
--  Use a JSON file to define variables that be used in SASS, JS, and even Templates! 🔮  - in this case its called... _vars.json
+-  Use a JSON file to define variables that be used in SASS, JS, and even Templates! 🔮  - in this case its called... _vars.json  
 
+### Commands you gotta run:
+    
     # install dependencies
     npm install
     
@@ -21,6 +23,6 @@ This SSG uses pug for templating - sass for styleeeing - JS grooveeeying. JS bun
     
     
 
-## .........next steps 👟💭
+## .........Next Steps 👟💭
   
 - Generate multiple pages from one template - create new pages only in JSON 🤔 😱
