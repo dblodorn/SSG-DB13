@@ -1,5 +1,5 @@
 // VARIABLES
-import configVars from '../_vars.json'
+import configVars from '../_data/_vars.json'
 // VENDOR
 import utility from './_app/utilities'
 // RUN CONFIG

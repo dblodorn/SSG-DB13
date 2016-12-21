@@ -1,7 +1,4 @@
 /* gulpfile.js */
-
-// Add gulp-changed
-
 /* Plugins */
 const gulp          = require('gulp'),
       runSequence   = require('run-sequence'),
@@ -50,7 +47,7 @@ var filesToWatch = [
   './src/*.pug',
   './src/**/*.pug',
   './src/_includes/*.pug',
-  './src/_data.json',
+  './src/_data/**/*.json',
   './src/_markdown/*.markdown',
   './src/_sass/**/*.sass'
 ]
@@ -58,7 +55,7 @@ var filesToWatch = [
 // JSON SASS
 gulp.task('sass', function() {
   return gulp
-  .src(['./src/_vars.json', './src/_sass/main.sass'])
+  .src(['./src/_data/_vars.json', './src/_sass/main.sass'])
   .pipe(jsonCss())
   .pipe(concat('main.sass'))
   .pipe(sass())
@@ -86,13 +83,18 @@ gulp.task('webpack-watch', shell.task([
   'npm run watch'
 ]))
 
+/* SHELL - WEBACK WATCH */
+gulp.task('webpack-build', shell.task([
+  'npm run build'
+]))
+
 gulp.task('watchgulp', function() {
   gulp.watch(filesToWatch, ['merge-json','pug','sass']);    
 });
 
 // MERGE JSON DATA
 gulp.task('merge-json', function() {
-  gulp.src('./src/*.json')
+  gulp.src('./src/_data/**/*.json')
       .pipe(merge('data.json'))
       .pipe(gulp.dest('./src/_temp/'));
 });
@@ -104,11 +106,13 @@ gulp.task('deploy', require('./gulp-tasks/deploy')(gulp, ftp));
 /* Default Task */
 gulp.task('default', ['merge-json','webpack-watch','watchgulp','connect']);
 
-
 // GET RUN SEQUENCE WORKING
 gulp.task('seq', function(callback) {
   runSequence('merge-json', ['sass', 'pug'],'webpack-watch','watchgulp','connect', callback);
 });
+
+// PRODUCTION
+gulp.task('prod', ['webpack-build']);
 
 /* GULP SYNC */
 sync(gulp, {
