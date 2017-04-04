@@ -2,6 +2,10 @@
 //  TOP LEVEL SELECTOR STYLING
 //-------------------------------------------------------------------
 
+=json-vars
+  +hero-bg-img('background',center,center)
+  background-color: $color-red
+
 html
   font-size: 55%
   -webkit-font-smoothing: antialiased
@@ -10,14 +14,15 @@ html
     font-size: 62.5%
 
 body
+  +json-vars
   font-size: $base-font-size
   overflow-x: hidden
   width: 100vw
   min-height: 100vh
   margin: 0
-  background: orange
   *
     @extend %border-box
+  
 
 // GENERAL
 

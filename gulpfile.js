@@ -14,13 +14,12 @@ const gulp          = require('gulp'),
       shell         = require('gulp-shell'),
       sass          = require('gulp-sass'),
       autoprefixer  = require('gulp-autoprefixer'),
+      concat        = require('gulp-concat'),
+      jsonCss       = require('gulp-json-css'),
       minifycss     = require('gulp-minify-css'),
       path          = require('path'),
       connect       = require('gulp-connect'),
-      config        = require('./config.json'),
-      //json
-      concat        = require('gulp-concat'),
-      jsonCss       = require('gulp-json-css');
+      config        = require('./config.json');
 
 /* I - O  */
 input  = {
@@ -55,7 +54,22 @@ var filesToWatch = [
 // JSON SASS
 gulp.task('sass', function() {
   return gulp
-  .src(['./src/_data/_vars.json', './src/_sass/main.sass'])
+  .src([
+    './src/_data/_vars.json',
+    './src/_sass/main.sass'
+  ])
+  .pipe(jsonCss())
+  .pipe(concat('main.sass'))
+  .pipe(sass())
+  .pipe(gulp.dest('./dist/static/css'));
+});
+
+gulp.task('sass-prod', function() {
+  return gulp
+  .src([
+    './src/_data/_vars.json',
+    './src/_sass/main.sass'
+  ])
   .pipe(jsonCss())
   .pipe(concat('main.sass'))
   .pipe(sass())
@@ -74,8 +88,6 @@ gulp.task('connect', function() {
     root: './dist/',
     livereload: true
   });
-  // run sequence
-  //callback();
 });
 
 /* SHELL - WEBACK WATCH */
@@ -88,28 +100,23 @@ gulp.task('webpack-build', shell.task([
   'npm run build'
 ]))
 
-gulp.task('watchgulp', function() {
-  gulp.watch(filesToWatch, ['merge-json','pug','sass']);    
-});
-
-// MERGE JSON DATA
 gulp.task('merge-json', function() {
   gulp.src('./src/_data/**/*.json')
       .pipe(merge('data.json'))
       .pipe(gulp.dest('./src/_temp/'));
 });
 
-/* Task Library */
 gulp.task('pug', require('./gulp-tasks/pug')(gulp, data, pug, rename, fs, merge));
 gulp.task('deploy', require('./gulp-tasks/deploy')(gulp, ftp));
 
-/* Default Task */
+gulp.task('watchgulp', function() {
+  gulp.watch(filesToWatch, ['merge-json','pug','sass']);    
+});
+
+// Default Task
 gulp.task('default', ['merge-json','webpack-watch','watchgulp','connect']);
 
-// GET RUN SEQUENCE WORKING
-gulp.task('seq', function(callback) {
-  runSequence('merge-json', ['sass', 'pug'],'webpack-watch','watchgulp','connect', callback);
-});
+gulp.task('all', ['merge-json','pug','sass']);
 
 // PRODUCTION
 gulp.task('prod', ['webpack-build']);

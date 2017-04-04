@@ -17,7 +17,12 @@
     "default\u001b[8mrg\u001b[0m\u001b[2D": "gulp default\u001b[8mrg\u001b[0m\u001b[2D",
     "default\u001b[8mkT\u001b[0m\u001b[2D": "gulp default\u001b[8mkT\u001b[0m\u001b[2D",
     "default\u001b[8mQ$\u001b[0m\u001b[2D": "gulp default\u001b[8mQ$\u001b[0m\u001b[2D",
-    "seq": "gulp seq"
+    "seq": "gulp seq",
+    "webpack-build": "gulp webpack-build",
+    "init": "gulp init",
+    "prod": "gulp prod",
+    "sass-prod": "gulp sass-prod",
+    "all": "gulp all"
   },
   "license": "GPL2",
   "devDependencies": {

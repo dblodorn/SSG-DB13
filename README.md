@@ -20,12 +20,4 @@ This SSG uses pug for templating - sass for styleeeing - JS grooveeeying. JS bun
     
     # Bundle the js up for production
     npm run build
-    
-    
 
-## .........Next Steps 👟💭
-  
-- Generate multiple pages from one template - create new pages only in JSON 🤔 😱
-- Pull the JSON Data from an external API - so you can use something like wordpress for the cms...
-- Pug image repeater loop by reading the file system of a folder...
-- Trim the dependancy fat & Try Yarn...
